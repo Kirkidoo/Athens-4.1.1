@@ -1,0 +1,66 @@
+<style>
+  .part-finder-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 10px; /* Spacing between items */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  .part-finder-container select,
+  .part-finder-container button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+  }
+  .part-finder-container select {
+    flex-grow: 1; /* Allow selects to grow and fill space */
+    min-width: 150px; /* Minimum width for select elements */
+  }
+  .part-finder-container button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    flex-grow: 0; /* Button does not grow as much */
+  }
+  .part-finder-container button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  .part-finder-container label { /* If we add labels later */
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+</style>
+
+<div class="part-finder-container">
+  <select id="part-finder-type">
+    <option value="">Select Type</option>
+  </select>
+  <select id="part-finder-make" disabled>
+    <option value="">Select Make</option>
+  </select>
+  <select id="part-finder-year" disabled>
+    <option value="">Select Year</option>
+  </select>
+  <select id="part-finder-model" disabled>
+    <option value="">Select Model</option>
+  </select>
+  <button id="part-finder-submit" disabled>Find Parts</button>
+</div>
+
+{{ 'part-finder.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Part Finder",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Part Finder"
+    }
+  ]
+}
+{% endschema %}
